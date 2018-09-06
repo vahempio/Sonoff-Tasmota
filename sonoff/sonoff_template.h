@@ -220,6 +220,7 @@ enum SupportedModules {
   SONOFF_POW_R2,
   SONOFF_IFAN02,
   BLITZWOLF_BWSHP2,
+  BAWOO,
   MAXMODULE };
 
 /********************************************************************************************/
@@ -282,7 +283,8 @@ const uint8_t kNiceList[MAXMODULE] PROGMEM = {
   KMC_70011,
   AILIGHT,
   WEMOS,
-  WITTY
+  WITTY,
+  BAWOO,
 };
 
 // Default module settings
@@ -906,8 +908,16 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      GPIO_HLW_CF1,     // GPIO14 BL0937 or HJL-01 CF1 voltage / current
      GPIO_REL1,        // GPIO15 Relay (0 = Off, 1 = On)
      0, 0
-  }
-};
+  },
+  { "Bawoo",           // BAWOO from SM-PW701E WLAN Socket (#1190)
+     0, 0, 0, 0,
+     GPIO_LED1_INV,    // GPIO04 Blue Led (0 = On, 1 = Off)
+     0,                // GPIO05 IR or RF receiver (optional)
+     0, 0, 0, 0, 0, 0, // NC
+     GPIO_REL1,        // GPIO12 Relay and Red Led (0 = Off, 1 = On)
+     GPIO_KEY1,        // GPIO13 Button
+     0, 0, 0, 0        // NC
+  },
 
 /*
   Optionals
@@ -1012,5 +1022,5 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      0, 0, 0
   },
 */
-
+};
 #endif  // _SONOFF_TEMPLATE_H_
